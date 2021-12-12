@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 
 
-public class WebDriverTest extends TestBase {
+public class TestFromLesson extends TestBase {
 
   public WebDriver driver = new WebDriverProvider().get();
 
@@ -18,7 +18,7 @@ public class WebDriverTest extends TestBase {
   }
 
   @Test
-  public void testGithubTitleChrome() {
+  public void testGithubTitle() {
     assertEquals("GitHub: Where the world builds software · GitHub", driver.getTitle());
   }
 }
