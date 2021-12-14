@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 public class WebTests {
 
   @Test
-  public void webLocaleTest() {
+  public void webChromeLocaleFileTest() {
     System.setProperty("environment", "chromeLocal");
     WebConfig webConfig = ConfigFactory.create(WebConfig.class, System.getProperties());
 
@@ -19,7 +19,7 @@ public class WebTests {
   }
 
   @Test
-  public void webRemoteTest() {
+  public void webSelenoidFileTest() {
     System.setProperty("environment", "selenoid");
     WebConfig webConfig = ConfigFactory.create(WebConfig.class,
                                                System.getProperties());
@@ -31,4 +31,14 @@ public class WebTests {
         "https://user1:1234@selenoid.autotests.cloud/wd/hub/");
 
   }
+
+  @Test
+  public void webDefaultValuesTest() {
+    WebConfig webConfig = ConfigFactory.create(WebConfig.class,
+                                               System.getProperties());
+    assertThat(webConfig.getBrowser()).isEqualTo("CHROME");
+    assertThat(webConfig.getBrowserVersion()).isEqualTo("95.0");
+    assertThat(webConfig.getBrowserSize()).isEqualTo("1920x1080");
+  }
 }
+
